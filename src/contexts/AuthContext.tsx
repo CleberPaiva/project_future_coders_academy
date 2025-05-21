@@ -25,6 +25,12 @@ const MOCK_USERS = {
     email: 'admin@teste.com',
     role: 'admin' as UserRole,
   },
+  'paiva@teste.com': {
+    id: 'admin-2',
+    name: 'Paiva',
+    email: 'paiva@teste.com',
+    role: 'admin' as UserRole,
+  },
   'prof@teste.com': {
     id: 'prof-1',
     name: 'Professor',
