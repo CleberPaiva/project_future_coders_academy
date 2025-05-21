@@ -65,6 +65,58 @@ const Header: React.FC<HeaderProps> = ({ isScrolled }) => {
           >
             Contato
           </NavLink>
+
+          {isAuthenticated && user?.role === 'admin' && (
+            <NavLink 
+              to="/admin" 
+              className={({ isActive }) => 
+                `text-sm font-semibold transition-colors duration-200 ${
+                  isActive ? 'text-primary-500' : 'text-gray-700 hover:text-primary-500'
+                }`
+              }
+            >
+              Painel Admin
+            </NavLink>
+          )}
+
+          {isAuthenticated && user?.role === 'teacher' && (
+            <NavLink 
+              to="/teacher" 
+              className={({ isActive }) => 
+                `text-sm font-semibold transition-colors duration-200 ${
+                  isActive ? 'text-primary-500' : 'text-gray-700 hover:text-primary-500'
+                }`
+              }
+            >
+              Painel Professor
+            </NavLink>
+          )}
+
+          {isAuthenticated && user?.role === 'parent' && (
+            <NavLink 
+              to="/parent" 
+              className={({ isActive }) => 
+                `text-sm font-semibold transition-colors duration-200 ${
+                  isActive ? 'text-primary-500' : 'text-gray-700 hover:text-primary-500'
+                }`
+              }
+            >
+              Painel Responsável
+            </NavLink>
+          )}
+
+          {isAuthenticated && user?.role === 'student' && (
+            <NavLink 
+              to={`/student-area/${user?.grade}`} 
+              className={({ isActive }) => 
+                `text-sm font-semibold transition-colors duration-200 ${
+                  isActive ? 'text-primary-500' : 'text-gray-700 hover:text-primary-500'
+                }`
+              }
+            >
+              Área do Aluno
+            </NavLink>
+          )}
           
           {isAuthenticated ? (
             <div className="relative group">
@@ -147,6 +199,54 @@ const Header: React.FC<HeaderProps> = ({ isScrolled }) => {
             >
               Contato
             </NavLink>
+
+            {isAuthenticated && user?.role === 'admin' && (
+              <NavLink 
+                to="/admin" 
+                className={({ isActive }) => 
+                  `py-2 px-4 rounded-md ${isActive ? 'bg-primary-50 text-primary-500' : 'text-gray-700'}`
+                }
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Painel Admin
+              </NavLink>
+            )}
+
+            {isAuthenticated && user?.role === 'teacher' && (
+              <NavLink 
+                to="/teacher" 
+                className={({ isActive }) => 
+                  `py-2 px-4 rounded-md ${isActive ? 'bg-primary-50 text-primary-500' : 'text-gray-700'}`
+                }
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Painel Professor
+              </NavLink>
+            )}
+
+            {isAuthenticated && user?.role === 'parent' && (
+              <NavLink 
+                to="/parent" 
+                className={({ isActive }) => 
+                  `py-2 px-4 rounded-md ${isActive ? 'bg-primary-50 text-primary-500' : 'text-gray-700'}`
+                }
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Painel Responsável
+              </NavLink>
+            )}
+
+            {isAuthenticated && user?.role === 'student' && (
+              <NavLink 
+                to={`/student-area/${user?.grade}`} 
+                className={({ isActive }) => 
+                  `py-2 px-4 rounded-md ${isActive ? 'bg-primary-50 text-primary-500' : 'text-gray-700'}`
+                }
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Área do Aluno
+              </NavLink>
+            )}
             
             {isAuthenticated ? (
               <>
