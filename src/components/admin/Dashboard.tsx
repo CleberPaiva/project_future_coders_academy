@@ -7,7 +7,7 @@ import {
   PlusCircleIcon, TrashIcon, PencilIcon
 } from '@heroicons/react/24/outline';
 
-// Mock data - replace with real data later
+// Mock data - substituir por dados reais posteriormente
 const mockTeachers = [
   { id: 1, name: 'João Silva', email: 'joao@escola.com', status: 'ativo' },
   { id: 2, name: 'Maria Santos', email: 'maria@escola.com', status: 'inativo' },
@@ -40,8 +40,6 @@ const mockPayments = [
 
 const AdminDashboard: React.FC = () => {
   const [selectedTab, setSelectedTab] = useState(0);
-
-  // Estado para formulários de adição/edição
   const [showForm, setShowForm] = useState(false);
   const [formType, setFormType] = useState('');
 
