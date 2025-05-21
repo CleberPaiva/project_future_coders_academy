@@ -1,12 +1,57 @@
 import React, { createContext, useState, useContext, useEffect } from 'react';
 
+type UserRole = 'admin' | 'teacher' | 'parent' | 'student';
+
 type User = {
   id: string;
   name: string;
   email: string;
+  role: UserRole;
   grade?: number;
-  points: number;
-  completedLessons: string[];
+  points?: number;
+  completedLessons?: string[];
+  linkedStudents?: string[];
+  subscription?: {
+    plan: string;
+    status: 'active' | 'inactive';
+    expiresAt: string;
+  };
+};
+
+const MOCK_USERS = {
+  'admin@teste.com': {
+    id: 'admin-1',
+    name: 'Administrador',
+    email: 'admin@teste.com',
+    role: 'admin' as UserRole,
+  },
+  'prof@teste.com': {
+    id: 'prof-1',
+    name: 'Professor',
+    email: 'prof@teste.com',
+    role: 'teacher' as UserRole,
+  },
+  'mae@teste.com': {
+    id: 'parent-1',
+    name: 'Maria (Responsável)',
+    email: 'mae@teste.com',
+    role: 'parent' as UserRole,
+    linkedStudents: ['student-1'],
+    subscription: {
+      plan: 'individual',
+      status: 'active',
+      expiresAt: '2024-12-31',
+    },
+  },
+  'aluno@teste.com': {
+    id: 'student-1',
+    name: 'João (Aluno)',
+    email: 'aluno@teste.com',
+    role: 'student' as UserRole,
+    grade: 1,
+    points: 0,
+    completedLessons: [],
+  },
 };
 
 type AuthContextType = {
