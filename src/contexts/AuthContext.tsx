@@ -98,19 +98,9 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   }, []);
   
   const login = async (email: string, password: string): Promise<boolean> => {
-    // Mock login - in a real app, this would call an API
     try {
-      // Mock successful login
-      if (email && password) {
-        const mockUser: User = {
-          id: 'user-123',
-          name: 'Estudante Exemplo',
-          email,
-          grade: 3, // Example grade
-          points: 150,
-          completedLessons: ['lesson-1', 'lesson-2'],
-        };
-        
+      const mockUser = MOCK_USERS[email];
+      if (mockUser && password) {
         setUser(mockUser);
         setIsAuthenticated(true);
         localStorage.setItem('futureCoderUser', JSON.stringify(mockUser));
