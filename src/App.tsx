@@ -58,6 +58,7 @@ function App() {
             <Route path="track/:grade" element={<TrackPage />} />
             <Route path="track/:grade/lessons/*" element={<LessonsRouter />} />
             <Route path="contact" element={<ContactPage />} />
+<Route path="subscription" element={<SubscriptionPage />} />
             <Route path="*" element={<NotFoundPage />} />
           </Route>
         </Routes>
