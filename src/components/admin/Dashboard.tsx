@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Tab } from '@headlessui/react';
 import { 
@@ -50,7 +49,6 @@ const AdminDashboard: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Implementar lógica de salvamento
     setShowForm(false);
   };
 
@@ -59,7 +57,7 @@ const AdminDashboard: React.FC = () => {
       <h1 className="text-2xl font-bold mb-6">Painel Administrativo</h1>
 
       <Tab.Group selectedIndex={selectedTab} onChange={setSelectedTab}>
-        <Tab.List className="flex space-x-1 rounded-xl bg-primary-100 p-1 mb-6">
+        <Tab.List className="flex space-x-1 rounded-xl bg-blue-100 p-1 mb-6">
           {[
             { name: 'Professores', icon: UserGroupIcon },
             { name: 'Responsáveis', icon: UsersIcon },
@@ -73,8 +71,8 @@ const AdminDashboard: React.FC = () => {
               className={({ selected }) =>
                 `flex items-center space-x-2 w-full rounded-lg py-2.5 px-3 text-sm font-medium leading-5
                 ${selected
-                  ? 'bg-white text-primary-700 shadow'
-                  : 'text-gray-700 hover:bg-white/[0.12] hover:text-primary-600'
+                  ? 'bg-white text-blue-700 shadow'
+                  : 'text-gray-700 hover:bg-white/[0.12] hover:text-blue-600'
                 }`
               }
             >
@@ -91,7 +89,7 @@ const AdminDashboard: React.FC = () => {
               <h2 className="text-xl font-semibold">Professores</h2>
               <button
                 onClick={() => showAddForm('professor')}
-                className="bg-primary-500 text-white px-4 py-2 rounded-lg flex items-center"
+                className="bg-blue-500 text-white px-4 py-2 rounded-lg flex items-center"
               >
                 <PlusCircleIcon className="h-5 w-5 mr-2" />
                 Adicionar Professor
@@ -121,7 +119,7 @@ const AdminDashboard: React.FC = () => {
                         </span>
                       </td>
                       <td className="px-6 py-4">
-                        <button className="text-primary-600 hover:text-primary-900 mr-3">
+                        <button className="text-blue-600 hover:text-blue-900 mr-3">
                           <PencilIcon className="h-5 w-5" />
                         </button>
                         <button className="text-red-600 hover:text-red-900">
@@ -141,7 +139,7 @@ const AdminDashboard: React.FC = () => {
               <h2 className="text-xl font-semibold">Responsáveis</h2>
               <button
                 onClick={() => showAddForm('responsavel')}
-                className="bg-primary-500 text-white px-4 py-2 rounded-lg flex items-center"
+                className="bg-blue-500 text-white px-4 py-2 rounded-lg flex items-center"
               >
                 <PlusCircleIcon className="h-5 w-5 mr-2" />
                 Adicionar Responsável
@@ -165,7 +163,7 @@ const AdminDashboard: React.FC = () => {
                       <td className="px-6 py-4">{parent.email}</td>
                       <td className="px-6 py-4">{parent.linkedStudents}</td>
                       <td className="px-6 py-4">
-                        <button className="text-primary-600 hover:text-primary-900 mr-3">
+                        <button className="text-blue-600 hover:text-blue-900 mr-3">
                           <PencilIcon className="h-5 w-5" />
                         </button>
                         <button className="text-red-600 hover:text-red-900">
@@ -185,7 +183,7 @@ const AdminDashboard: React.FC = () => {
               <h2 className="text-xl font-semibold">Alunos</h2>
               <button
                 onClick={() => showAddForm('aluno')}
-                className="bg-primary-500 text-white px-4 py-2 rounded-lg flex items-center"
+                className="bg-blue-500 text-white px-4 py-2 rounded-lg flex items-center"
               >
                 <PlusCircleIcon className="h-5 w-5 mr-2" />
                 Adicionar Aluno
@@ -211,7 +209,7 @@ const AdminDashboard: React.FC = () => {
                       <td className="px-6 py-4">{student.track}</td>
                       <td className="px-6 py-4">{student.parent}</td>
                       <td className="px-6 py-4">
-                        <button className="text-primary-600 hover:text-primary-900 mr-3">
+                        <button className="text-blue-600 hover:text-blue-900 mr-3">
                           <PencilIcon className="h-5 w-5" />
                         </button>
                         <button className="text-red-600 hover:text-red-900">
@@ -231,7 +229,7 @@ const AdminDashboard: React.FC = () => {
               <h2 className="text-xl font-semibold">Trilhas Educacionais</h2>
               <button
                 onClick={() => showAddForm('trilha')}
-                className="bg-primary-500 text-white px-4 py-2 rounded-lg flex items-center"
+                className="bg-blue-500 text-white px-4 py-2 rounded-lg flex items-center"
               >
                 <PlusCircleIcon className="h-5 w-5 mr-2" />
                 Adicionar Trilha
@@ -263,7 +261,7 @@ const AdminDashboard: React.FC = () => {
                         </span>
                       </td>
                       <td className="px-6 py-4">
-                        <button className="text-primary-600 hover:text-primary-900 mr-3">
+                        <button className="text-blue-600 hover:text-blue-900 mr-3">
                           <PencilIcon className="h-5 w-5" />
                         </button>
                         <button className="text-red-600 hover:text-red-900">
@@ -283,7 +281,7 @@ const AdminDashboard: React.FC = () => {
               <h2 className="text-xl font-semibold">Planos de Pagamento</h2>
               <button
                 onClick={() => showAddForm('plano')}
-                className="bg-primary-500 text-white px-4 py-2 rounded-lg flex items-center"
+                className="bg-blue-500 text-white px-4 py-2 rounded-lg flex items-center"
               >
                 <PlusCircleIcon className="h-5 w-5 mr-2" />
                 Adicionar Plano
@@ -309,7 +307,7 @@ const AdminDashboard: React.FC = () => {
                       <td className="px-6 py-4">{plan.period}</td>
                       <td className="px-6 py-4">{plan.discount}%</td>
                       <td className="px-6 py-4">
-                        <button className="text-primary-600 hover:text-primary-900 mr-3">
+                        <button className="text-blue-600 hover:text-blue-900 mr-3">
                           <PencilIcon className="h-5 w-5" />
                         </button>
                         <button className="text-red-600 hover:text-red-900">
@@ -356,7 +354,7 @@ const AdminDashboard: React.FC = () => {
                       </td>
                       <td className="px-6 py-4">{new Date(payment.date).toLocaleDateString('pt-BR')}</td>
                       <td className="px-6 py-4">
-                        <button className="text-primary-600 hover:text-primary-900 mr-3">
+                        <button className="text-blue-600 hover:text-blue-900 mr-3">
                           <PencilIcon className="h-5 w-5" />
                         </button>
                       </td>
@@ -380,7 +378,7 @@ const AdminDashboard: React.FC = () => {
               {formType === 'trilha' && 'Adicionar Trilha'}
               {formType === 'plano' && 'Adicionar Plano'}
             </h3>
-            
+
             <form onSubmit={handleSubmit}>
               {/* Campos específicos para cada tipo de formulário */}
               {['professor', 'responsavel'].includes(formType) && (
@@ -496,7 +494,7 @@ const AdminDashboard: React.FC = () => {
                 </button>
                 <button
                   type="submit"
-                  className="px-4 py-2 bg-primary-500 text-white rounded hover:bg-primary-600"
+                  className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
                 >
                   Salvar
                 </button>
