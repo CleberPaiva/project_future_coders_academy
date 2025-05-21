@@ -1,0 +1,67 @@
+Crie a lógica completa e a interface funcional do Painel do Administrador em `src/components/admin/Dashboard.tsx`.
+
+O painel deve conter todas as funcionalidades administrativas do sistema, com as seguintes seções e capacidades:
+
+---
+
+### 1. Gestão de Professores
+- Listar todos os professores
+- Cadastrar novo professor (nome, e-mail, senha, status: ativo/inativo)
+- Editar dados de um professor
+- Excluir professor
+
+### 2. Gestão de Responsáveis
+- Listar responsáveis
+- Cadastrar novo responsável (nome, e-mail, senha, número de alunos vinculados)
+- Editar dados
+- Excluir responsável
+
+### 3. Gestão de Alunos
+- Listar todos os alunos
+- Cadastrar novo aluno (nome, ano escolar, trilha associada, responsável vinculado)
+- Editar dados
+- Excluir aluno
+- Vincular/desvincular alunos a um responsável
+
+---
+
+### 4. Gestão de Trilhas Educacionais
+- Listar todas as trilhas
+- Criar nova trilha (nome, descrição, ano escolar, nível)
+- Editar trilhas existentes
+- Desativar trilhas (soft delete)
+- Deletar trilhas permanentemente
+- Gerenciar módulos dentro da trilha:
+  - Adicionar módulo (título, descrição, vídeo, PDF, atividade, quiz)
+  - Editar módulo
+  - Remover módulo
+
+---
+
+### 5. Gestão de Planos de Pagamento
+- Listar todos os planos (Individual, Familiar I, Familiar II)
+- Editar valores e condições (mensal/anual, preço, desconto)
+- Adicionar ou remover planos personalizados
+- Visualizar usuários ativos por plano
+
+---
+
+### 6. Controle de Pagamentos
+- Listar pagamentos realizados por responsáveis
+- Ver status de pagamento (ativo, pendente, expirado)
+- Atualizar status manualmente (ex: ativar, cancelar)
+- Ver histórico de transações
+
+---
+
+### Outras instruções:
+- Interface com abas ou navegação por seções (Professores, Alunos, Trilhas, Pagamentos, etc.)
+- Exibir mensagens de feedback (sucesso, erro, alerta)
+- Utilizar React Hooks e Context API (ou outro método de controle de estado)
+- Pode usar mock de banco de dados com `localStorage`, `Replit DB` ou `Firebase`
+- Layout leve, responsivo e em português do Brasil
+- Todos os campos devem ter validação básica (ex: campos obrigatórios)
+
+---
+
+Este painel será usado apenas por usuários com o papel de "admin", e deve ser acessível apenas se o login for do tipo `admin`.
