@@ -14,6 +14,7 @@ import TrackPage from './pages/TrackPage';
 import StudentAreaPage from './pages/StudentAreaPage';
 import ContactPage from './pages/ContactPage';
 import NotFoundPage from './pages/NotFoundPage';
+import SubscriptionPage from './components/subscription/SubscriptionPage';
 
 // Lessons
 import AlgorithmIntro from './components/lessons/AlgorithmIntro';
