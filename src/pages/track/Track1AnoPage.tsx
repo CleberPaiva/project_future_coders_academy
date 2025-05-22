@@ -1,5 +1,4 @@
-
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
 import { TRACK_1 } from '../../data/modules';
@@ -8,7 +7,26 @@ import { Lock, Play, FileText, CheckSquare } from 'lucide-react';
 const Track1AnoPage: React.FC = () => {
   const { isAuthenticated, user } = useAuth();
   const navigate = useNavigate();
-  
+  const [modules, setModules] = useState<Module[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function loadModules() {
+      try {
+        // Assuming getModulesByTrack is defined elsewhere and retrieves data from Supabase
+        // and Module type is also defined.  Since these are not provided I am commenting this out to prevent errors.
+        //const data = await getModulesByTrack('track-1');
+        //setModules(data);
+      } catch (error) {
+        console.error('Error loading modules:', error);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    loadModules();
+  }, []);
+
   const getModuleIcon = (type: string) => {
     switch (type) {
       case 'video':
@@ -44,7 +62,7 @@ const Track1AnoPage: React.FC = () => {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {TRACK_1.modules.map((module) => {
             const isAvailable = isModuleAvailable(module.free || false);
-            
+
             return (
               <div 
                 key={module.id}
