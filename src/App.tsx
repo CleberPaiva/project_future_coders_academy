@@ -9,6 +9,8 @@ import MainLayout from './layouts/MainLayout';
 import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
 import TracksPage from './pages/TracksPage';
+import Track1AnoPage from './pages/track/Track1AnoPage';
+
 import HowItWorksPage from './pages/HowItWorksPage';
 import TrackPage from './pages/TrackPage';
 import StudentAreaPage from './pages/StudentAreaPage';
@@ -58,6 +60,8 @@ function App() {
             <Route path="student/:grade" element={<StudentAreaPage />} />
             <Route path="shop" element={<ComingSoon title="Loja de Kits Educativos" />} />
             <Route path="track/1" element={<Track1AnoPage />} />
+            <Route path="track/1ano" element={<Track1AnoPage />} />
+
             <Route path="track/:grade" element={<TrackPage />} />
             <Route path="track/:grade/lessons/*" element={<LessonsRouter />} />
             <Route path="contact" element={<ContactPage />} />

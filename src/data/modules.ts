@@ -25,7 +25,7 @@ export const TRACK_1: Track = {
       title: 'O Que É Informática?',
       description: 'Vamos descobrir juntos o que é informática e como ela faz parte do nosso dia a dia de muitas pessoas, no estudo, no trabalho e na diversão.',
       type: 'video',
-      duration: '15 min',
+      duration: '45 min',
       free: true
     },
     {
@@ -33,7 +33,7 @@ export const TRACK_1: Track = {
       title: 'O Computador no Dia a Dia',
       description: 'Você sabia que podemos usar o computador para estudar, fazer trabalhos e até nos divertir? Vamos ver onde mais a informática aparece!',
       type: 'video',
-      duration: '15 min'
+      duration: '45 min'
     },
     {
       id: 'module-3',
@@ -47,7 +47,7 @@ export const TRACK_1: Track = {
       title: 'Conhecendo o Teclado',
       description: 'Hoje, vamos aprender para que serve cada parte do teclado, esse objeto cheio de letrinhas e símbolos.',
       type: 'video',
-      duration: '15 min',
+      duration: '45 min'
     },
     {
       id: 'module-5',
@@ -61,7 +61,7 @@ export const TRACK_1: Track = {
       title: 'Usando o Mouse',
       description: 'Vamos aprender a segurar e movimentar o mouse para controlar o cursor e clicar nas coisas.',
       type: 'video',
-      duration: '15 min'
+      duration: '45 min'
     },
     {
       id: 'module-7',
@@ -75,7 +75,7 @@ export const TRACK_1: Track = {
       title: 'O Que É a Internet?',
       description: 'A internet é como uma grande rede que liga computadores do mundo todo. Vamos descobrir o que podemos fazer nela.',
       type: 'video',
-      duration: '15 min'
+      duration: '45 min'
     },
     {
       id: 'module-9',
@@ -89,7 +89,7 @@ export const TRACK_1: Track = {
       title: 'Primeiros Passos na Programação',
       description: 'A programação é como dar ordens para o computador. Vamos aprender a criar nossos próprios programas simples.',
       type: 'video',
-      duration: '15 min'
+      duration: '45 min'
     },
     {
       id: 'module-11',
@@ -103,7 +103,7 @@ export const TRACK_1: Track = {
       title: 'O Que É um Robô?',
       description: 'Os robôs são máquinas que podem fazer muitas coisas. Vamos conhecer alguns robôs e como eles funcionam.',
       type: 'video',
-      duration: '15 min'
+      duration: '45 min'
     },
     {
       id: 'module-13',
@@ -117,7 +117,7 @@ export const TRACK_1: Track = {
       title: 'Para Que Servem os Aplicativos?',
       description: 'Os aplicativos são programas que fazem coisas específicas. Vamos ver alguns aplicativos que usamos no dia a dia.',
       type: 'video',
-      duration: '15 min'
+      duration: '45 min'
     },
     {
       id: 'module-15',
@@ -131,7 +131,7 @@ export const TRACK_1: Track = {
       title: 'O Que É um Jogo Digital?',
       description: 'Os jogos digitais são uma forma divertida de usar a informática. Vamos conhecer alguns jogos e como eles são feitos.',
       type: 'video',
-      duration: '15 min'
+      duration: '45 min'
     },
     {
       id: 'module-17',
@@ -145,7 +145,7 @@ export const TRACK_1: Track = {
       title: 'A Informática e a Música',
       description: 'A informática também pode ser usada para criar e tocar música. Vamos descobrir como isso é possível.',
       type: 'video',
-      duration: '15 min'
+      duration: '45 min'
     },
     {
       id: 'module-19',
@@ -159,7 +159,7 @@ export const TRACK_1: Track = {
       title: 'O Que É Realidade Virtual?',
       description: 'A realidade virtual nos leva para outros mundos. Vamos descobrir como ela funciona e para que serve.',
       type: 'video',
-      duration: '15 min'
+      duration: '45 min'
     },
     {
       id: 'module-21',
@@ -173,7 +173,7 @@ export const TRACK_1: Track = {
       title: 'O Que É Inteligência Artificial?',
       description: 'A inteligência artificial faz com que os computadores pensem. Vamos conhecer alguns exemplos de IA.',
       type: 'video',
-      duration: '15 min'
+      duration: '45 min'
     },
     {
       id: 'module-23',
@@ -187,7 +187,7 @@ export const TRACK_1: Track = {
       title: 'A Informática e a Arte',
       description: 'A informática pode ser usada para criar arte digital. Vamos ver como os artistas usam a tecnologia.',
       type: 'video',
-      duration: '15 min'
+      duration: '45 min'
     },
     {
       id: 'module-25',
@@ -201,7 +201,7 @@ export const TRACK_1: Track = {
       title: 'O Que É a Robótica Educacional?',
       description: 'A robótica educacional usa robôs para ensinar. Vamos conhecer alguns robôs educativos e como eles funcionam.',
       type: 'video',
-      duration: '15 min'
+      duration: '45 min'
     },
     {
       id: 'module-27',
@@ -215,7 +215,7 @@ export const TRACK_1: Track = {
       title: 'A Informática e a Saúde',
       description: 'A informática ajuda os médicos a cuidarem da nossa saúde. Vamos ver como a tecnologia é usada na medicina.',
       type: 'video',
-      duration: '15 min'
+      duration: '45 min'
     },
     {
       id: 'module-29',
@@ -229,7 +229,7 @@ export const TRACK_1: Track = {
       title: 'Revisão: O Que Aprendemos?',
       description: 'Vamos relembrar tudo o que aprendemos sobre informática e como ela está presente em nossas vidas.',
       type: 'video',
-      duration: '15 min'
+      duration: '45 min'
     },
     {
       id: 'module-31',
