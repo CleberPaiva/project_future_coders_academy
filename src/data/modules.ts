@@ -4,6 +4,10 @@ export interface Module {
   id: string;
   title: string;
   description: string;
+  content?: string;
+  video_url?: string;
+  pdf_url?: string;
+  atividade_url?: string;
   type: 'video' | 'pdf' | 'activity' | 'quiz';
   duration?: string;
   points?: number;
@@ -21,9 +25,10 @@ export const TRACK_1: Track = {
   grade: 1,
   modules: [
     {
-      id: 'intro',
+      id: '1',
       title: 'O Que É Informática?',
       description: 'Vamos descobrir juntos o que é informática e como ela faz parte do nosso dia a dia de muitas pessoas, no estudo, no trabalho e na diversão.',
+      content: 'Vamos descobrir juntos o que é informática e como ela faz parte do nosso dia a dia de muitas pessoas, no estudo, no trabalho e na diversão.',
       type: 'video',
       duration: '45 min',
       free: true

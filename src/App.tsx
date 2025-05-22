@@ -61,6 +61,7 @@ function App() {
             <Route path="shop" element={<ComingSoon title="Loja de Kits Educativos" />} />
             <Route path="track/1" element={<Track1AnoPage />} />
             <Route path="track/1ano" element={<Track1AnoPage />} />
+            <Route path="track/1ano/module/:id" element={<Module1AnoPage />} />
 
             <Route path="track/:grade" element={<TrackPage />} />
             <Route path="track/:grade/lessons/*" element={<LessonsRouter />} />
