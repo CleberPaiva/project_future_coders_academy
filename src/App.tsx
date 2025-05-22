@@ -57,6 +57,7 @@ function App() {
             <Route path="parent" element={<ParentDashboard />} />
             <Route path="student/:grade" element={<StudentAreaPage />} />
             <Route path="shop" element={<ComingSoon title="Loja de Kits Educativos" />} />
+            <Route path="track/1" element={<Track1AnoPage />} />
             <Route path="track/:grade" element={<TrackPage />} />
             <Route path="track/:grade/lessons/*" element={<LessonsRouter />} />
             <Route path="contact" element={<ContactPage />} />
