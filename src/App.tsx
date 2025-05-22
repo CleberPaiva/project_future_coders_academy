@@ -23,9 +23,10 @@ import AlgorithmRoutine from './components/lessons/AlgorithmRoutine';
 import RoutineBuilder from './components/lessons/RoutineBuilder';
 
 // Admin Components (Placeholder - Implementation Needed)
-const AdminDashboard = () => <div>Admin Dashboard (Em Construção)</div>;
-const TeacherDashboard = () => <div>Teacher Dashboard (Em Construção)</div>;
-const ParentDashboard = () => <div>Parent Dashboard (Em Construção)</div>;
+import AdminDashboard from './components/admin/Dashboard';
+import TeacherDashboard from './components/teacher/Dashboard';
+import ParentDashboard from './components/parent/Dashboard';
+
 
 // Coming Soon Page
 const ComingSoon = ({ title }) => <div>{title} (Em Breve)</div>;

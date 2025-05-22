@@ -21,7 +21,7 @@ const MainLayout: React.FC = () => {
     <div className="flex flex-col min-h-screen">
       <Header isScrolled={isScrolled} />
       
-      <main className="flex-grow">
+      <main className="pt-20">
         <AnimatePresence mode="wait">
           <motion.div
             key={location.pathname}
