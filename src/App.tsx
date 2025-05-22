@@ -10,6 +10,7 @@ import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
 import TracksPage from './pages/TracksPage';
 import Track1AnoPage from './pages/track/Track1AnoPage';
+import Module1AnoPage from './pages/track/Module1AnoPage';
 
 import HowItWorksPage from './pages/HowItWorksPage';
 import TrackPage from './pages/TrackPage';

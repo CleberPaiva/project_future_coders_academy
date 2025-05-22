@@ -1,0 +1,88 @@
+Integre este projeto React/TypeScript ao Supabase. Crie um arquivo `supabaseClient.ts` com a configuração de conexão (usando ambiente `.env` com `VITE_SUPABASE_URL` e `VITE_SUPABASE_ANON_KEY`). Em seguida, crie as seguintes tabelas no Supabase, com os respectivos campos:
+
+---
+
+### 🔐 Usuários (`users`)
+- `id` (UUID, Primary Key, auto)
+- `email` (string, único)
+- `nome` (string)
+- `senha_hash` (string)
+- `tipo_usuario` (enum: `admin`, `professor`, `responsavel`, `aluno`)
+- `ano_escolar` (int, opcional)
+- `responsavel_id` (UUID, FK para `users`, opcional)
+- `criado_em` (timestamp)
+
+---
+
+### 🧑‍🏫 Professores (vinculados ao tipo_usuario `professor`)
+Não precisa de tabela separada — use `users` com `tipo_usuario = 'professor'`.
+
+---
+
+### 👨‍👩‍👧‍👦 Responsáveis (vinculados a alunos)
+Também ficam na `users`, com `tipo_usuario = 'responsavel'`.
+
+---
+
+### 🎓 Alunos (vinculados a responsáveis)
+Use `users` com `tipo_usuario = 'aluno'` e campo `responsavel_id` preenchido.
+
+---
+
+### 📚 Trilhas (`tracks`)
+- `id` (UUID, PK)
+- `nome` (string)
+- `descricao` (string)
+- `nivel` (string)
+- `ano_escolar` (int)
+- `ativo` (boolean)
+- `criado_em` (timestamp)
+
+---
+
+### 📘 Módulos (`modules`)
+- `id` (UUID, PK)
+- `track_id` (UUID, FK para `tracks`)
+- `titulo` (string)
+- `conteudo` (text)
+- `video_url` (string)
+- `pdf_url` (string)
+- `atividade_url` (string)
+- `tipo` (enum: `video`, `pdf`, `activity`, `quiz`)
+- `duracao` (string)
+- `pontos` (int)
+- `free` (boolean)
+- `ordem` (int)
+- `criado_em` (timestamp)
+
+---
+
+### 💳 Planos (`plans`)
+- `id` (UUID, PK)
+- `nome` (string)
+- `descricao` (string)
+- `valor_mensal` (float)
+- `valor_anual` (float)
+- `qtd_alunos` (int)
+- `ativo` (boolean)
+
+---
+
+### 🧾 Assinaturas (`subscriptions`)
+- `id` (UUID, PK)
+- `responsavel_id` (UUID, FK para `users`)
+- `plano_id` (UUID, FK para `plans`)
+- `status` (enum: `ativo`, `inativo`, `pendente`, `cancelado`)
+- `data_inicio` (date)
+- `data_fim` (date)
+- `renovacao_automatica` (boolean)
+
+---
+
+### 🔁 Prossiga com:
+1. Criar o `supabaseClient.ts` com o setup básico.
+2. Criar funções assíncronas genéricas `getModulesByTrack(trackId)` e `getModuleById(id)`.
+3. Substituir `TRACK_1.modules` do front-end por uma chamada `getModulesByTrack('track-1')`.
+4. Se possível, implemente autenticação com Supabase e login por email/senha.
+
+Use Tailwind para manter o visual atual. O site precisa continuar leve e responsivo para celular.

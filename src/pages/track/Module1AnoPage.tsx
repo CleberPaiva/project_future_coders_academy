@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { ArrowLeft, FileText, CheckSquare } from 'lucide-react';
@@ -7,8 +6,8 @@ import { TRACK_1 } from '../../data/modules';
 const Module1AnoPage: React.FC = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  
-  const module = TRACK_1.modules.find(m => m.id === Number(id));
+
+  const module = TRACK_1.modules.find((m) => m.id === id);
 
   if (!module) {
     return (
@@ -41,11 +40,11 @@ const Module1AnoPage: React.FC = () => {
           Voltar para a trilha
         </button>
 
-        <h1 className="text-3xl font-bold mb-6">{module.titulo}</h1>
-        
+        <h1 className="text-3xl font-bold mb-6">{module.title}</h1>
+
         <div className="bg-white rounded-lg border border-gray-200 p-6 mb-6">
           <h2 className="text-xl font-semibold mb-4">Conteúdo</h2>
-          <p className="text-gray-600 whitespace-pre-wrap">{module.conteudo}</p>
+          <p className="text-gray-600 whitespace-pre-wrap">{module.description || module.content}</p>
         </div>
 
         {module.video_url && (
