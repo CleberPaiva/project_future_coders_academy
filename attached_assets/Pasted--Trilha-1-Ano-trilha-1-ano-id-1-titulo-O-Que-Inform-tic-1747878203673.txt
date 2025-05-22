@@ -1,0 +1,265 @@
+"Trilha 1º Ano".
+{
+  "trilha_1_ano": [
+    {
+      "id": 1,
+      "titulo": "O Que É Informática?",
+      "conteudo": "Vamos descobrir juntos o que é informática e como ela faz parte do nosso dia a dia de muitas pessoas, no estudo, no trabalho e na diversão.",
+      "video_url": "",
+      "pdf_url": "",
+      "atividade_url": ""
+    },
+    {
+      "id": 2,
+      "titulo": "O Computador no Dia a Dia",
+      "conteudo": "Você sabia que podemos usar o computador para estudar, fazer trabalhos e até nos divertir? Vamos ver onde mais a informática aparece!",
+      "video_url": "",
+      "pdf_url": "",
+      "atividade_url": ""
+    },
+    {
+      "id": 3,
+      "titulo": "Vamos Ligar o Computador?",
+      "conteudo": "Aprender a ligar o computador é o primeiro passo para usar a informática. Vamos conhecer como fazer isso.",
+      "video_url": "",
+      "pdf_url": "",
+      "atividade_url": ""
+    },
+     {
+      "id": 4,
+      "titulo": "Conhecendo o Hardware (Partes do Computador)",
+      "conteudo": "O computador tem várias partes! Vamos conhecer algumas delas e entender o que são, como a 'cabeça' do computador e outras peças.",
+      "video_url": "",
+      "pdf_url": "",
+      "atividade_url": ""
+    },
+     {
+      "id": 5,
+      "titulo": "Periféricos de Entrada: Falando com o Computador",
+      "conteudo": "Algumas partes do computador nos ajudam a 'conversar' com ele, como o mouse e o teclado. Vamos ver como eles funcionam.",
+      "video_url": "",
+      "pdf_url": "",
+      "atividade_url": ""
+    },
+     {
+      "id": 6,
+      "titulo": "Usando o Teclado e o Mouse",
+      "conteudo": "Vamos praticar como usar o teclado para escrever e o mouse para clicar e mover coisas na tela do computador.",
+      "video_url": "",
+      "pdf_url": "",
+      "atividade_url": ""
+    },
+    {
+      "id": 7,
+      "titulo": "Periféricos de Saída: O Computador Fala Conosco",
+      "conteudo": "Outras partes nos mostram ou nos contam o que o computador está fazendo, como o monitor, a impressora e as caixas de som.",
+      "video_url": "",
+      "pdf_url": "",
+      "atividade_url": ""
+    },
+    {
+      "id": 8,
+      "titulo": "Conhecendo a Impressora",
+      "conteudo": "A impressora nos ajuda a tirar do computador coisas que vemos na tela, como desenhos e textos. Vamos aprender sobre ela.",
+      "video_url": "",
+      "pdf_url": "",
+      "atividade_url": ""
+    },
+     {
+      "id": 9,
+      "titulo": "Conectando as Partes do Computador",
+      "conteudo": "Vamos descobrir como as diferentes partes do computador se juntam para funcionar, como ligar o monitor ou a impressora.",
+      "video_url": "",
+      "pdf_url": "",
+      "atividade_url": ""
+    },
+     {
+      "id": 10,
+      "titulo": "Identificando os Periféricos",
+      "conteudo": "Agora que conhecemos alguns periféricos (partes do computador), vamos brincar de identificar cada um e saber para que servem.",
+      "video_url": "",
+      "pdf_url": "",
+      "atividade_url": ""
+    },
+     {
+      "id": 11,
+      "titulo": "O Que É Software? (Os Programas)",
+      "conteudo": "Além das partes que podemos tocar (Hardware), o computador tem coisas que não tocamos, como os programas. Isso é o Software!",
+      "video_url": "",
+      "pdf_url": "",
+      "atividade_url": ""
+    },
+    {
+      "id": 12,
+      "titulo": "Tipos de Software",
+      "conteudo": "Existem programas para muitas coisas! Programas para desenhar, para escrever, para jogar... Vamos conhecer alguns tipos.",
+      "video_url": "",
+      "pdf_url": "",
+      "atividade_url": ""
+    },
+    {
+      "id": 13,
+      "titulo": "Sistema Operacional: O 'Cérebro' do Software",
+      "conteudo": "Todo computador precisa de um programa muito importante que faz tudo funcionar, o Sistema Operacional. Vamos entender um pouquinho sobre o Windows.",
+      "video_url": "",
+      "pdf_url": "",
+      "atividade_url": ""
+    },
+    {
+      "id": 14,
+      "titulo": "Praticando com o Mouse",
+      "conteudo": "É hora de usar o mouse de verdade! Vamos praticar cliques e movimentos na tela, como nos desenhos da apostila.",
+      "video_url": "",
+      "pdf_url": "",
+      "atividade_url": ""
+    },
+    {
+      "id": 15,
+      "titulo": "Praticando com o Teclado",
+      "conteudo": "Vamos praticar como apertar as teclas certas no teclado para escrever palavras ou números.",
+      "video_url": "",
+      "pdf_url": "",
+      "atividade_url": ""
+    },
+    {
+      "id": 16,
+      "titulo": "Dicas: Desenhando no Paint (Ferramentas)",
+      "conteudo": "O Paint é um programa para desenhar! Vamos conhecer as ferramentas mágicas que ele tem para criar nossos desenhos.",
+      "video_url": "",
+      "pdf_url": "",
+      "atividade_url": ""
+    },
+    {
+      "id": 17,
+      "titulo": "Criando Desenhos no Paint",
+      "conteudo": "Hora de usar a criatividade! Vamos fazer lindos desenhos no Paint usando as ferramentas que aprendemos.",
+      "video_url": "",
+      "pdf_url": "",
+      "atividade_url": ""
+    },
+    {
+      "id": 18,
+      "titulo": "Dicas: Usando a Calculadora do Computador",
+      "conteudo": "O computador também tem uma calculadora igualzinha à que usamos na escola! Vamos ver como ela funciona.",
+      "video_url": "",
+      "pdf_url": "",
+      "atividade_url": ""
+    },
+    {
+      "id": 19,
+      "titulo": "Praticando Contas na Calculadora",
+      "conteudo": "Vamos usar a calculadora do computador para resolver algumas continhas e ver como é fácil!",
+      "video_url": "",
+      "pdf_url": "",
+      "atividade_url": ""
+    },
+    {
+      "id": 20,
+      "titulo": "O Que São Vírus de Computador?",
+      "conteudo": "Você sabia que o computador pode 'ficar doente' com 'vírus'? Mas não é doença de gente! Vamos entender o que são.",
+      "video_url": "",
+      "pdf_url": "",
+      "atividade_url": ""
+    },
+    {
+      "id": 21,
+      "titulo": "Como Proteger o Computador dos Vírus",
+      "conteudo": "Para o computador não 'ficar doente', precisamos de cuidados especiais. Vamos aprender a protegê-lo.",
+      "video_url": "",
+      "pdf_url": "",
+      "atividade_url": ""
+    },
+    {
+      "id": 22,
+      "titulo": "Raciocínio Lógico: Pensando Para Resolver",
+      "conteudo": "Raciocínio lógico é um jeito de pensar que nos ajuda a resolver problemas, como um detetive! Vamos começar a treinar.",
+      "video_url": "",
+      "pdf_url": "",
+      "atividade_url": ""
+    },
+    {
+      "id": 23,
+      "titulo": "Raciocínio Lógico: Resolvendo Problemas 1",
+      "conteudo": "Vamos usar nosso raciocínio para ligar as partes certas e completar imagens.",
+      "video_url": "",
+      "pdf_url": "",
+      "atividade_url": ""
+    },
+    {
+      "id": 24,
+      "titulo": "Raciocínio Lógico: Resolvendo Problemas 2",
+      "conteudo": "Qual a ordem certa? Vamos usar o raciocínio lógico para organizar imagens e sequências.",
+      "video_url": "",
+      "pdf_url": "",
+      "atividade_url": ""
+    },
+    {
+      "id": 25,
+      "titulo": "Raciocínio Lógico: Encontrando o Diferente",
+      "conteudo": "Em um grupo, sempre tem um que não se parece com os outros. Vamos usar nosso olhar de detetive para achar o diferente!",
+      "video_url": "",
+      "pdf_url": "",
+      "atividade_url": ""
+    },
+    {
+      "id": 26,
+      "titulo": "Mundo da Tecnologia: Robótica",
+      "conteudo": "Você sabe o que são robôs? Eles estão por toda parte, até em aspiradores de pó e carros! Vamos conhecer a robótica.",
+      "video_url": "",
+      "pdf_url": "",
+      "atividade_url": ""
+    },
+    {
+      "id": 27,
+      "titulo": "Robôs no Nosso Dia a Dia",
+      "conteudo": "Vamos ver onde mais podemos encontrar robôs e como eles ajudam as pessoas em diferentes lugares, como fábricas.",
+      "video_url": "",
+      "pdf_url": "",
+      "atividade_url": ""
+    },
+     {
+      "id": 28,
+      "titulo": "Profissões da Tecnologia: Cientista da Computação",
+      "conteudo": "Quem cria os programas de computador? Os Cientistas da Computação! Eles usam matemática e lógica para inventar coisas novas.",
+      "video_url": "",
+      "pdf_url": "",
+      "atividade_url": ""
+    },
+     {
+      "id": 29,
+      "titulo": "Outras Profissões com Tecnologia",
+      "conteudo": "A tecnologia está em muitas profissões. Vamos descobrir onde mais a informática é importante para o trabalho das pessoas.",
+      "video_url": "",
+      "pdf_url": "",
+      "atividade_url": ""
+    },
+    {
+      "id": 30,
+      "titulo": "Mundo da Tecnologia: Internet e Sites",
+      "conteudo": "Na internet, podemos visitar muitos lugares: sites de notícias, redes sociais (com a ajuda de um adulto), sites de jogos e usar e-mail.",
+      "video_url": "",
+      "pdf_url": "",
+      "atividade_url": ""
+    },
+    {
+      "id": 31,
+      "titulo": "Revisão: Partes do Computador",
+      "conteudo": "Vamos relembrar tudo o que aprendemos sobre as partes do computador, como o mouse, teclado, monitor e impressora.",
+      "video_url": "",
+      "pdf_url": "",
+      "atividade_url": ""
+    },
+    {
+      "id": 32,
+      "titulo": "Revisão: Escrevendo Nomes e Praticando",
+      "conteudo": "Para terminar, vamos praticar a escrita dos nomes das partes do computador e fazer algumas atividades de revisão divertidas.",
+      "video_url": "",
+      "pdf_url": "",
+      "atividade_url": ""
+    }
+  ]
+}
+
+
+
+
