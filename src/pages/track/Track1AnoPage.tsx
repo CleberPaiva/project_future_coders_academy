@@ -1,8 +1,10 @@
+
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useAuth } from '../../contexts/AuthContext';
-import { TRACK_1 } from '../../data/modules';
 import { Lock, Play, FileText, CheckSquare } from 'lucide-react';
+import { useAuth } from '../../contexts/AuthContext';
+import { getModulesByTrack } from '../../lib/supabase';
+import { Module } from '../../types/supabase';
 
 const Track1AnoPage: React.FC = () => {
   const { isAuthenticated, user } = useAuth();
@@ -13,10 +15,8 @@ const Track1AnoPage: React.FC = () => {
   useEffect(() => {
     async function loadModules() {
       try {
-        // Assuming getModulesByTrack is defined elsewhere and retrieves data from Supabase
-        // and Module type is also defined.  Since these are not provided I am commenting this out to prevent errors.
-        //const data = await getModulesByTrack('track-1');
-        //setModules(data);
+        const data = await getModulesByTrack('track-1');
+        setModules(data);
       } catch (error) {
         console.error('Error loading modules:', error);
       } finally {
@@ -45,6 +45,10 @@ const Track1AnoPage: React.FC = () => {
     return isAuthenticated && user?.subscription?.status === 'active';
   };
 
+  if (loading) {
+    return <div className="pt-20 pb-16 text-center">Carregando...</div>;
+  }
+
   return (
     <div className="pt-20 pb-16">
       <div className="bg-gradient-to-r from-primary-500 to-secondary-500 text-white py-16">
@@ -60,51 +64,47 @@ const Track1AnoPage: React.FC = () => {
 
       <div className="container mx-auto px-4 py-12">
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {TRACK_1.modules.map((module) => {
-            const isAvailable = isModuleAvailable(module.free || false);
-
-            return (
-              <div 
-                key={module.id}
-                className={`rounded-lg border border-gray-200 bg-white p-6 transition-all
-                  ${isAvailable ? 'hover:shadow-lg' : 'opacity-75'}`}
-              >
-                <div className="flex justify-between items-start mb-4">
-                  <div className={`rounded-full p-2 ${
-                    isAvailable ? 'bg-primary-50 text-primary-500' : 'bg-gray-100 text-gray-400'
-                  }`}>
-                    {getModuleIcon(module.type)}
-                  </div>
-                  {!isAvailable && <Lock className="w-5 h-5 text-gray-400" />}
+          {modules.map((module) => (
+            <div 
+              key={module.id}
+              className={`rounded-lg border border-gray-200 bg-white p-6 transition-all
+                ${isModuleAvailable(module.free) ? 'hover:shadow-lg' : 'opacity-75'}`}
+            >
+              <div className="flex justify-between items-start mb-4">
+                <div className={`rounded-full p-2 ${
+                  isModuleAvailable(module.free) ? 'bg-primary-50 text-primary-500' : 'bg-gray-100 text-gray-400'
+                }`}>
+                  {getModuleIcon(module.tipo)}
                 </div>
-
-                <h3 className="text-lg font-semibold mb-2">{module.title}</h3>
-                <p className="text-gray-600 text-sm mb-4">{module.description}</p>
-
-                <div className="flex items-center justify-between mb-4">
-                  {module.duration && (
-                    <span className="text-sm text-gray-500">{module.duration}</span>
-                  )}
-                  {module.free && (
-                    <span className="text-sm bg-green-100 text-green-600 px-2 py-1 rounded-full">
-                      Gratuito
-                    </span>
-                  )}
-                </div>
-
-                <button
-                  onClick={() => navigate(`/track/1ano/module/${module.id}`)}
-                  className={`w-full py-2 px-4 rounded-lg text-center transition-colors
-                    ${isAvailable 
-                      ? 'bg-primary-500 text-white hover:bg-primary-600' 
-                      : 'bg-gray-200 text-gray-400 cursor-not-allowed'}`}
-                  disabled={!isAvailable}
-                >
-                  {isAvailable ? 'Acessar' : 'Módulo Bloqueado'}
-                </button>
+                {!isModuleAvailable(module.free) && <Lock className="w-5 h-5 text-gray-400" />}
               </div>
-            );
-          })}
+
+              <h3 className="text-lg font-semibold mb-2">{module.titulo}</h3>
+              <p className="text-gray-600 text-sm mb-4">{module.conteudo}</p>
+
+              <div className="flex items-center justify-between mb-4">
+                {module.duracao && (
+                  <span className="text-sm text-gray-500">{module.duracao}</span>
+                )}
+                {module.free && (
+                  <span className="text-sm bg-green-100 text-green-600 px-2 py-1 rounded-full">
+                    Gratuito
+                  </span>
+                )}
+              </div>
+
+              <button
+                onClick={() => navigate(`/track/1ano/module/${module.id}`)}
+                className={`w-full py-2 px-4 rounded-lg text-center transition-colors
+                  ${isModuleAvailable(module.free)
+                    ? 'bg-primary-500 text-white hover:bg-primary-600' 
+                    : 'bg-gray-200 text-gray-400 cursor-not-allowed'}`}
+                disabled={!isModuleAvailable(module.free)}
+              >
+                {isModuleAvailable(module.free) ? 'Acessar' : 'Módulo Bloqueado'}
+              </button>
+            </div>
+          ))}
         </div>
       </div>
     </div>

@@ -1,13 +1,42 @@
-import React from 'react';
+
+import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { ArrowLeft, FileText, CheckSquare } from 'lucide-react';
-import { TRACK_1 } from '../../data/modules';
+import { useAuth } from '../../contexts/AuthContext';
+import { getModuleById } from '../../lib/supabase';
+import { Module } from '../../types/supabase';
 
 const Module1AnoPage: React.FC = () => {
   const { id } = useParams();
   const navigate = useNavigate();
+  const { isAuthenticated, user } = useAuth();
+  const [module, setModule] = useState<Module | null>(null);
+  const [loading, setLoading] = useState(true);
 
-  const module = TRACK_1.modules.find((m) => m.id === id);
+  useEffect(() => {
+    async function loadModule() {
+      if (!id) return;
+      try {
+        const data = await getModuleById(id);
+        setModule(data);
+        
+        // Check access
+        if (!data.free && (!isAuthenticated || user?.subscription?.status !== 'active')) {
+          navigate('/track/1ano');
+        }
+      } catch (error) {
+        console.error('Error loading module:', error);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    loadModule();
+  }, [id, isAuthenticated, user, navigate]);
+
+  if (loading) {
+    return <div className="pt-20 pb-16 text-center">Carregando...</div>;
+  }
 
   if (!module) {
     return (
@@ -40,11 +69,11 @@ const Module1AnoPage: React.FC = () => {
           Voltar para a trilha
         </button>
 
-        <h1 className="text-3xl font-bold mb-6">{module.title}</h1>
+        <h1 className="text-3xl font-bold mb-6">{module.titulo}</h1>
 
         <div className="bg-white rounded-lg border border-gray-200 p-6 mb-6">
           <h2 className="text-xl font-semibold mb-4">Conteúdo</h2>
-          <p className="text-gray-600 whitespace-pre-wrap">{module.description || module.content}</p>
+          <p className="text-gray-600 whitespace-pre-wrap">{module.conteudo}</p>
         </div>
 
         {module.video_url && (

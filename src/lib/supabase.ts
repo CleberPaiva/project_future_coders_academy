@@ -1,5 +1,6 @@
 
 import { createClient } from '@supabase/supabase-js';
+import { Module, Track } from '../types/supabase';
 
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
 const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
@@ -18,7 +19,7 @@ export async function getModulesByTrack(trackId: string) {
     .order('ordem');
     
   if (error) throw error;
-  return data;
+  return data as Module[];
 }
 
 export async function getModuleById(id: string) {
@@ -29,5 +30,16 @@ export async function getModuleById(id: string) {
     .single();
     
   if (error) throw error;
-  return data;
+  return data as Module;
+}
+
+export async function getTrackById(id: string) {
+  const { data, error } = await supabase
+    .from('tracks')
+    .select('*')
+    .eq('id', id)
+    .single();
+    
+  if (error) throw error;
+  return data as Track;
 }
