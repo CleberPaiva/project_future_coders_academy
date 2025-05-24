@@ -1,0 +1,57 @@
+Supabase e seus campos, em Português:
+
+1. Tabela: users
+Esta tabela armazena as informações dos usuários do seu sistema, que podem ser alunos, professores ou responsáveis.
+
+id (uuid): Identificador Único Universal. É a chave primária da tabela, um código único para cada usuário.
+email (text): Endereço de e-mail do usuário. Geralmente usado para login e comunicação.
+nome (text): Nome completo do usuário.
+tipo_usuario (USER-DEFINED - user_type): Campo customizado que define o papel do usuário no sistema (ex: 'aluno', 'professor', 'responsavel'). Isso é crucial para controlar permissões e a lógica de negócios.
+ano_escolar (integer): Representa o ano ou a série escolar em que o usuário (provavelmente um aluno) está matriculado.
+responsavel_id (uuid): Uma chave estrangeira (ligação com a própria tabela users). Serve para associar um usuário (aluno) ao seu respectivo responsável. Pode ser nulo.
+criado_em (timestamp without time zone): Data e hora exatas em que o registro do usuário foi criado no banco de dados.
+2. Tabela: tracks
+Esta tabela representa as trilhas de aprendizado ou cursos disponíveis na plataforma.
+
+id (uuid): Identificador Único Universal. Chave primária da tabela de trilhas.
+grade (integer): Indica o ano escolar (série) para o qual esta trilha é recomendada ou destinada.
+titulo (text): O nome ou título principal da trilha de aprendizado.
+descricao (text): Um texto detalhado explicando o que é a trilha, seus objetivos e conteúdo.
+nivel (text): O nível de dificuldade ou estágio da trilha (ex: 'Básico', 'Avançado', 'Módulo 1').
+criado_em (timestamp without time zone): Data e hora em que a trilha foi criada.
+3. Tabela: modules
+Esta tabela contém os módulos ou aulas individuais que compõem cada trilha de aprendizado.
+
+id (uuid): Identificador Único Universal. Chave primária da tabela de módulos.
+track_id (uuid): Chave estrangeira que liga este módulo à trilha (tracks) a que ele pertence.
+titulo (text): O nome ou título do módulo.
+conteudo (text): O corpo principal do conteúdo do módulo, caso seja em formato de texto.
+video_url (text): Link (URL) de um vídeo, se o módulo for nesse formato.
+pdf_url (text): Link (URL) de um arquivo PDF, se houver material de apoio.
+atividade_url (text): Link (URL) de uma atividade relacionada ao módulo.
+tipo (USER-DEFINED - module_type): Campo customizado que define o formato do módulo (ex: 'Video', 'Texto', 'Quiz').
+duracao (text): Estimativa da duração do módulo (ex: "10 minutos").
+pontos (integer): Pontuação ao completar o módulo.
+free (boolean): Indica se o módulo é gratuito (true) ou pago (false).
+ordem (integer): Número para definir a sequência dos módulos na trilha.
+criado_em (timestamp without time zone): Data e hora em que o módulo foi criado.
+4. Tabela: plans
+Esta tabela armazena os diferentes planos de assinatura ou acesso que você oferece.
+
+id (uuid): Identificador Único Universal. Chave primária da tabela de planos.
+nome (text): O nome comercial do plano (ex: 'Plano Gratuito', 'Plano Premium').
+descricao (text): Texto detalhando os benefícios de cada plano.
+valor_mensal (numeric): O preço do plano se a cobrança for mensal.
+valor_anual (numeric): O preço do plano se a cobrança for anual.
+duracao_dias (integer): A duração do acesso em dias.
+ativo (boolean): Indica se o plano está disponível para compra (true) ou não (false).
+criado_em (timestamp without time zone): Data e hora em que o plano foi criado.
+5. Tabela: subscriptions
+Esta tabela registra as assinaturas dos usuários nos planos disponíveis.
+
+id (uuid): Identificador Único Universal. Chave primária da inscrição.
+user_id (uuid): Chave Estrangeira. Liga ao usuário (users).
+plan_id (uuid): Chave Estrangeira. Liga ao plano (plans).
+status (text): O estado atual da inscrição (ex: 'ativa', 'cancelada').
+inicio (timestamp without time zone): Data e hora em que a inscrição começou.
+fim (timestamp without time zone): Data e hora em que a inscrição termina.

@@ -1,66 +1,72 @@
+import React, { useEffect, useState } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import { Play, FileText, CheckSquare, ArrowLeft } from "lucide-react";
+import { createClient } from "@supabase/supabase-js";
+import { motion } from "framer-motion";
 
-import React, { useEffect, useState } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
-import { ArrowLeft, FileText, CheckSquare } from 'lucide-react';
-import { useAuth } from '../../contexts/AuthContext';
-import { supabase } from '../../lib/supabase';
-import { Module } from '../../types/supabase';
+const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
+const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
+const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
-const Module1AnoPage: React.FC = () => {
-  const { id } = useParams();
+const ModulePage: React.FC = () => {
+  const { grade, id } = useParams();
   const navigate = useNavigate();
-  const { isAuthenticated, user } = useAuth();
-  const [module, setModule] = useState<Module | null>(null);
-  const [loading, setLoading] = useState(true);
+  const [module, setModule] = useState<any>(null);
+  const [trackTitle, setTrackTitle] = useState("");
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    async function loadModule() {
-      if (!id) return;
-      try {
-        const { data, error } = await supabase
-          .from('modules')
-          .select('*')
-          .eq('id', id)
-          .single();
-        
-        if (error) throw error;
-        setModule(data);
-        
-        // Check access
-        if (!data.free && (!isAuthenticated || user?.subscription?.status !== 'active')) {
-          navigate('/track/1ano');
-        }
-      } catch (err) {
-        setError(err.message);
-      } finally {
-        setLoading(false);
+    const fetchModule = async () => {
+      const numericGrade = parseInt((grade || "").replace(/\D/g, ""), 10);
+      if (!numericGrade || isNaN(numericGrade) || !id) {
+        setError("Parâmetro de grade inválido.");
+        return;
       }
-    }
 
-    loadModule();
-  }, [id, isAuthenticated, user, navigate]);
+      try {
+        const { data: track, error: trackError } = await supabase
+          .from("tracks")
+          .select("*")
+          .eq("grade", numericGrade)
+          .single();
 
-  if (loading) {
-    return <div className="pt-20 pb-16 text-center">Carregando...</div>;
-  }
+        if (trackError) throw trackError;
+        setTrackTitle(track.titulo);
 
-  if (error || !module) {
+        const { data, error: moduleError } = await supabase
+          .from("modules")
+          .select("*")
+          .eq("track_id", track.id)
+          .eq("ordem", Number(id))
+          .single();
+
+        if (moduleError) throw moduleError;
+
+        setModule(data);
+      } catch (err: any) {
+        setError(err.message);
+      }
+    };
+
+    fetchModule();
+  }, [grade, id]);
+
+  if (error) {
     return (
       <div className="pt-20 pb-16">
         <div className="container mx-auto px-4">
-          <div className="bg-red-50 border border-red-200 rounded-lg p-6 text-center">
-            <h2 className="text-2xl font-bold text-red-600 mb-2">Módulo não encontrado</h2>
-            <p className="text-red-600 mb-4">{error || 'O módulo que você está procurando não existe.'}</p>
-            <button
-              onClick={() => navigate('/track/1ano')}
-              className="inline-flex items-center text-red-600 hover:text-red-700"
-            >
-              <ArrowLeft className="w-4 h-4 mr-2" />
-              Voltar para a trilha
-            </button>
+          <div className="bg-red-50 text-red-600 p-4 rounded-lg text-center">
+            {error}
           </div>
         </div>
+      </div>
+    );
+  }
+
+  if (!module) {
+    return (
+      <div className="pt-20 pb-16 text-center">
+        <div className="animate-pulse">Carregando módulo...</div>
       </div>
     );
   }
@@ -69,27 +75,35 @@ const Module1AnoPage: React.FC = () => {
     <div className="pt-20 pb-16">
       <div className="container mx-auto px-4">
         <button
-          onClick={() => navigate('/track/1ano')}
+          onClick={() => navigate(`/track/${grade}`)}
           className="inline-flex items-center text-gray-600 hover:text-gray-800 mb-6"
         >
           <ArrowLeft className="w-4 h-4 mr-2" />
           Voltar para a trilha
         </button>
 
-        <h1 className="text-3xl font-bold mb-6">{module.titulo}</h1>
-
-        <div className="bg-white rounded-lg border border-gray-200 p-6 mb-6">
-          <h2 className="text-xl font-semibold mb-4">Conteúdo</h2>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="card p-6 border border-gray-200 bg-white rounded-lg shadow mb-10"
+        >
+          <h2 className="text-2xl font-bold mb-4">{module.titulo}</h2>
           <p className="text-gray-600 whitespace-pre-wrap">{module.conteudo}</p>
-        </div>
+        </motion.div>
 
         {module.video_url && (
-          <div className="bg-white rounded-lg border border-gray-200 p-6 mb-6">
-            <h2 className="text-xl font-semibold mb-4">Vídeo</h2>
-            {module.video_url.includes('youtube.com') ? (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="card p-6 border border-gray-200 bg-white rounded-lg shadow mb-6"
+          >
+            <h3 className="text-xl font-semibold mb-4">Vídeo</h3>
+            {module.video_url.includes("youtube.com") ? (
               <div className="aspect-w-16 aspect-h-9">
                 <iframe
-                  src={module.video_url.replace('watch?v=', 'embed/')}
+                  src={module.video_url.replace("watch?v=", "embed/")}
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
                   className="w-full h-full rounded-lg"
@@ -102,12 +116,19 @@ const Module1AnoPage: React.FC = () => {
                 className="w-full rounded-lg"
               />
             )}
-          </div>
+          </motion.div>
         )}
 
         {module.pdf_url && (
-          <div className="bg-white rounded-lg border border-gray-200 p-6 mb-6">
-            <h2 className="text-xl font-semibold mb-4">Material Complementar</h2>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="card p-6 border border-gray-200 bg-white rounded-lg shadow mb-6"
+          >
+            <h3 className="text-xl font-semibold mb-4">
+              Material Complementar
+            </h3>
             <a
               href={module.pdf_url}
               target="_blank"
@@ -117,12 +138,17 @@ const Module1AnoPage: React.FC = () => {
               <FileText className="w-4 h-4 mr-2" />
               Baixar PDF
             </a>
-          </div>
+          </motion.div>
         )}
 
         {module.atividade_url && (
-          <div className="bg-white rounded-lg border border-gray-200 p-6">
-            <h2 className="text-xl font-semibold mb-4">Atividade</h2>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            className="card p-6 border border-gray-200 bg-white rounded-lg shadow"
+          >
+            <h3 className="text-xl font-semibold mb-4">Atividade</h3>
             <a
               href={module.atividade_url}
               target="_blank"
@@ -132,11 +158,11 @@ const Module1AnoPage: React.FC = () => {
               <CheckSquare className="w-4 h-4 mr-2" />
               Acessar Atividade
             </a>
-          </div>
+          </motion.div>
         )}
       </div>
     </div>
   );
 };
 
-export default Module1AnoPage;
+export default ModulePage;
