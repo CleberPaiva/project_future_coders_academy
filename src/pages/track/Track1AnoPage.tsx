@@ -1,31 +1,15 @@
 
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Lock, Play, FileText, CheckSquare } from 'lucide-react';
 import { useAuth } from '../../contexts/AuthContext';
-import { getModulesByTrack } from '../../lib/supabase';
+import { useModules } from '../../hooks/useModules';
 import { Module } from '../../types/supabase';
 
 const Track1AnoPage: React.FC = () => {
   const { isAuthenticated, user } = useAuth();
   const navigate = useNavigate();
-  const [modules, setModules] = useState<Module[]>([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    async function loadModules() {
-      try {
-        const data = await getModulesByTrack('track-1');
-        setModules(data);
-      } catch (error) {
-        console.error('Error loading modules:', error);
-      } finally {
-        setLoading(false);
-      }
-    }
-
-    loadModules();
-  }, []);
+  const { modules, loading, error } = useModules('track-1');
 
   const getModuleIcon = (type: string) => {
     switch (type) {
@@ -46,7 +30,25 @@ const Track1AnoPage: React.FC = () => {
   };
 
   if (loading) {
-    return <div className="pt-20 pb-16 text-center">Carregando...</div>;
+    return (
+      <div className="pt-20 pb-16">
+        <div className="container mx-auto px-4 text-center">
+          <div className="animate-pulse">Carregando...</div>
+        </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="pt-20 pb-16">
+        <div className="container mx-auto px-4">
+          <div className="bg-red-50 text-red-600 p-4 rounded-lg">
+            {error}
+          </div>
+        </div>
+      </div>
+    );
   }
 
   return (
@@ -80,7 +82,7 @@ const Track1AnoPage: React.FC = () => {
               </div>
 
               <h3 className="text-lg font-semibold mb-2">{module.titulo}</h3>
-              <p className="text-gray-600 text-sm mb-4">{module.conteudo}</p>
+              <p className="text-gray-600 text-sm mb-4">{module.conteudo.substring(0, 150)}...</p>
 
               <div className="flex items-center justify-between mb-4">
                 {module.duracao && (

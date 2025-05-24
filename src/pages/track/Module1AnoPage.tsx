@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { ArrowLeft, FileText, CheckSquare } from 'lucide-react';
 import { useAuth } from '../../contexts/AuthContext';
-import { getModuleById } from '../../lib/supabase';
+import { supabase } from '../../lib/supabase';
 import { Module } from '../../types/supabase';
 
 const Module1AnoPage: React.FC = () => {
@@ -12,20 +12,27 @@ const Module1AnoPage: React.FC = () => {
   const { isAuthenticated, user } = useAuth();
   const [module, setModule] = useState<Module | null>(null);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     async function loadModule() {
       if (!id) return;
       try {
-        const data = await getModuleById(id);
+        const { data, error } = await supabase
+          .from('modules')
+          .select('*')
+          .eq('id', id)
+          .single();
+        
+        if (error) throw error;
         setModule(data);
         
         // Check access
         if (!data.free && (!isAuthenticated || user?.subscription?.status !== 'active')) {
           navigate('/track/1ano');
         }
-      } catch (error) {
-        console.error('Error loading module:', error);
+      } catch (err) {
+        setError(err.message);
       } finally {
         setLoading(false);
       }
@@ -38,13 +45,13 @@ const Module1AnoPage: React.FC = () => {
     return <div className="pt-20 pb-16 text-center">Carregando...</div>;
   }
 
-  if (!module) {
+  if (error || !module) {
     return (
       <div className="pt-20 pb-16">
         <div className="container mx-auto px-4">
           <div className="bg-red-50 border border-red-200 rounded-lg p-6 text-center">
             <h2 className="text-2xl font-bold text-red-600 mb-2">Módulo não encontrado</h2>
-            <p className="text-red-600 mb-4">O módulo que você está procurando não existe.</p>
+            <p className="text-red-600 mb-4">{error || 'O módulo que você está procurando não existe.'}</p>
             <button
               onClick={() => navigate('/track/1ano')}
               className="inline-flex items-center text-red-600 hover:text-red-700"
