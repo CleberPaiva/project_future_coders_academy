@@ -1,42 +1,54 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Tab } from '@headlessui/react';
 import { 
   UserGroupIcon, UsersIcon, AcademicCapIcon, 
   BookOpenIcon, CreditCardIcon, BanknotesIcon,
   PlusCircleIcon, TrashIcon, PencilIcon
 } from '@heroicons/react/24/outline';
+import { useUsers } from '../../hooks/useUsers';
+import { usePlans } from '../../hooks/usePlans';
+import { useSubscriptions } from '../../hooks/useSubscriptions';
+import UserForm from './UserForm';
+import TrackForm from './TrackForm';
+const AdminDashboard: React.FC = () => {
+  const [selectedTab, setSelectedTab] = useState(0);
+  const [showForm, setShowForm] = useState(false);
+  const [formType, setFormType] = useState('');
+  const [selectedItemId, setSelectedItemId] = useState<string | null>(null);
 
-// Mock data - substituir por dados reais posteriormente
-const mockTeachers = [
-  { id: 1, name: 'João Silva', email: 'joao@escola.com', status: 'ativo' },
-  { id: 2, name: 'Maria Santos', email: 'maria@escola.com', status: 'inativo' },
-];
+  const { users: teachers, loading: teachersLoading, error: teachersError, deleteUser: deleteTeacher } = useUsers('professor');
+  const { users: parents, loading: parentsLoading, error: parentsError, deleteUser: deleteParent } = useUsers('responsavel');
+  const { users: students, loading: studentsLoading, error: studentsError, deleteUser: deleteStudent } = useUsers('aluno');
+  const { plans, loading: plansLoading, error: plansError, deletePlan } = usePlans();
+  const { subscriptions, loading: subscriptionsLoading, error: subscriptionsError } = useSubscriptions();
 
-const mockParents = [
-  { id: 1, name: 'Carlos Pereira', email: 'carlos@email.com', linkedStudents: 2 },
-  { id: 2, name: 'Ana Oliveira', email: 'ana@email.com', linkedStudents: 1 },
-];
+  const showAddForm = (type: string) => {
+    setFormType(type);
+    setSelectedItemId(null);
+    setShowForm(true);
+  };
 
-const mockStudents = [
-  { id: 1, name: 'Pedro Pereira', grade: '5º ano', track: 'Lógica Básica', parent: 'Carlos Pereira' },
-  { id: 2, name: 'Julia Oliveira', grade: '6º ano', track: 'Programação Web', parent: 'Ana Oliveira' },
-];
-
-const mockTracks = [
-  { id: 1, name: 'Lógica Básica', grade: '5º ano', level: 'Iniciante', active: true },
-  { id: 2, name: 'Programação Web', grade: '6º ano', level: 'Intermediário', active: true },
-];
-
-const mockPlans = [
-  { id: 1, name: 'Individual', price: 89.90, period: 'mensal', discount: 0 },
-  { id: 2, name: 'Familiar I', price: 149.90, period: 'mensal', discount: 10 },
-];
-
-const mockPayments = [
-  { id: 1, parent: 'Carlos Pereira', plan: 'Familiar I', status: 'ativo', date: '2024-01-15' },
-  { id: 2, parent: 'Ana Oliveira', plan: 'Individual', status: 'pendente', date: '2024-01-14' },
-];
+  const handleDelete = async (type: string, id: string) => {
+    try {
+      switch (type) {
+        case 'professor':
+          await deleteTeacher(id);
+          break;
+        case 'responsavel':
+          await deleteParent(id);
+          break;
+        case 'aluno':
+          await deleteStudent(id);
+          break;
+        case 'plano':
+          await deletePlan(id);
+          break;
+      }
+    } catch (error) {
+      console.error('Error deleting item:', error);
+    }
+  };
 
 const AdminDashboard: React.FC = () => {
   const [selectedTab, setSelectedTab] = useState(0);
