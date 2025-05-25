@@ -26,11 +26,20 @@ const UserForm: React.FC<UserFormProps> = ({ onSuccess, userType, onClose }) => 
     setError(null);
 
     try {
-      await createUser(formData);
-      onSuccess?.();
-      onClose();
+      if (!formData.nome || !formData.email || !formData.senha) {
+        throw new Error('Por favor, preencha todos os campos');
+      }
+      
+      const result = await createUser(formData);
+      if (result) {
+        onSuccess?.();
+        onClose();
+      } else {
+        throw new Error('Erro ao criar usuário');
+      }
     } catch (err: any) {
-      setError(err.message);
+      setError(err.message || 'Erro ao criar usuário. Tente novamente.');
+      console.error('Erro ao criar usuário:', err);
     } finally {
       setLoading(false);
     }
