@@ -31,15 +31,19 @@ const UserForm: React.FC<UserFormProps> = ({ onSuccess, userType, onClose }) => 
       }
       
       const result = await createUser(formData);
-      if (result) {
-        onSuccess?.();
-        onClose();
-      } else {
+      if (!result) {
         throw new Error('Erro ao criar usuário');
       }
+      
+      onSuccess?.();
+      onClose();
     } catch (err: any) {
-      setError(err.message || 'Erro ao criar usuário. Tente novamente.');
       console.error('Erro ao criar usuário:', err);
+      setError(
+        err.message === 'FetchError' 
+          ? 'Erro de conexão com o servidor'
+          : err.message || 'Erro ao salvar os dados'
+      );
     } finally {
       setLoading(false);
     }
